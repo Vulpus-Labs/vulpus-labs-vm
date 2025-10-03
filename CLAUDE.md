@@ -33,11 +33,11 @@ Contains three Gradle-based library collections:
 
 ### `modules/` - Individual Voltage Modular Modules
 
-Contains 20+ individual module implementations. Each module has:
+Contains 24 individual module implementations. Each module has:
 - A `.java` file (e.g., `Catkins.java`) - the module implementation
 - A `.vmod` file - binary module definition/skin data
 
-Modules include: `catkins`, `catkins-stereo`, `chebysynth`, `chebz`, `crosstalk`, `cumulonimbus`, `curvaceous`, `distributor`, `glow-up`, `ranges`, `rapscallion`, `ratios`, `scapegrace`, `segments`, `speccy`, `spree`, `swirl`, `swirl-mini`, `switcheroo`, `torment-nexus`
+Modules include: `beverley`, `catkins`, `catkins-stereo`, `chebysynth`, `chebz`, `crosstalk`, `cumulonimbus`, `curvaceous`, `distributor`, `glow-up`, `magnus`, `matchmaker`, `pow`, `ranges`, `rapscallion`, `ratios`, `scapegrace`, `segments`, `speccy`, `spree`, `swirl`, `swirl-mini`, `switcheroo`, `torment-nexus`
 
 ## Build System
 

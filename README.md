@@ -4,10 +4,10 @@ Monorepo for Vulpus Labs Voltage Modular plugins, including shared libraries and
 
 ## Repository Structure
 
-- **`libs/`** - Shared libraries (Gradle-based Java/Kotlin projects)
-  - `libs/vulpes/` - Java libraries (20+ submodules: vulpes-values, vulpes-interface, vulpes-buffer, vulpes-filters, etc.)
-  - `libs/vulpes-libs/` - Kotlin libraries (vulpes-values, vulpes-events, vulpes-maths, vulpes-interface, vulpes-controls)
-  - `libs/vulpus-libs/` - Additional Kotlin libraries
+- **`libs-old/`** - Shared libraries (Gradle-based Java/Kotlin projects)
+  - `libs-old/vulpes/` - Java libraries (20+ submodules: vulpes-values, vulpes-interface, vulpes-buffer, vulpes-filters, etc.)
+  - `libs-old/vulpes-libs/` - Kotlin libraries (vulpes-values, vulpes-events, vulpes-maths, vulpes-interface, vulpes-controls)
+  - `libs-old/vulpus-libs/` - Additional Kotlin libraries
 
 - **`modules/`** - Individual Voltage Modular module implementations
   - Each module contains a `.java` implementation file and `.vmod` binary module definition

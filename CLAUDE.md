@@ -18,17 +18,17 @@ The repository is organized into three main directories:
 
 Contains three Gradle-based library collections:
 
-- **`libs/vulpes/`** - Java libraries (Gradle, Java)
+- **`libs-old/vulpes/`** - Java libraries (Gradle, Java)
   - Multi-module Gradle project with 20+ submodules
   - Package: `com.vulpuslabs.vulpes.*`
   - Submodules include: `vulpes-values`, `vulpes-interface`, `vulpes-buffer`, `vulpes-filters`, `vulpes-catkins`, `vulpes-cumulonumbus`, etc.
   - Each submodule has its own `build.gradle` and can be built independently
   - Core library is `vulpes-interface` which provides Voltage Modular SDK classes
 
-- **`libs/vulpes-libs/`** - Kotlin libraries (Gradle, Kotlin)
+- **`libs-old/vulpes-libs/`** - Kotlin libraries (Gradle, Kotlin)
   - Contains: `vulpes-values`, `vulpes-events`, `vulpes-maths`, `vulpes-interface`, `vulpes-controls`
 
-- **`libs/vulpus-libs/`** - Additional Kotlin libraries (Gradle, Kotlin)
+- **`libs-old/vulpus-libs/`** - Additional Kotlin libraries (Gradle, Kotlin)
   - Minimal configuration
 
 ### `modules/` - Individual Voltage Modular Modules

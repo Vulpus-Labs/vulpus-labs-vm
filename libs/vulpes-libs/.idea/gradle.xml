@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/vulpes-controls" />
+            <option value="$PROJECT_DIR$/vulpes-events" />
+            <option value="$PROJECT_DIR$/vulpes-interface" />
+            <option value="$PROJECT_DIR$/vulpes-maths" />
+            <option value="$PROJECT_DIR$/vulpes-values" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

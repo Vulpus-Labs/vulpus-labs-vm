@@ -12,7 +12,9 @@ This is a monorepo for Vulpus Labs / Voltage Modular plugins. Voltage Modular is
 
 The repository is organized into three main directories:
 
-### `libs/` - Shared Libraries
+### `libs` - Shared libraries (not populated yet)
+
+### `libs-old/` - (Old) Shared Libraries
 
 Contains three Gradle-based library collections:
 

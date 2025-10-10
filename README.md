@@ -1,6 +1,6 @@
 # Vulpus Labs - Voltage Modular Modules
 
-Monorepo for Vulpus Labs Voltage Modular plugins, including shared libraries and 24 individual module implementations.
+Monorepo for Vulpus Labs Voltage Modular plugins, including shared libraries and individual module implementations.
 
 ## Repository Structure
 

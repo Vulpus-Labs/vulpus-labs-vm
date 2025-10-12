@@ -28,7 +28,7 @@ public Magnus( long moduleID, VoltageObjects voltageObjects )
 
 
    canBeBypassed = false;
-   SetSkin( "6afb45a1e33d44fb92bc75eed7f74985" );
+   SetSkin( "3ac7c73f61184b0ea7dfe15557e55782" );
 }
 
 void InitializeControls()
@@ -63,7 +63,7 @@ void InitializeControls()
    releaseKnob = new VoltageKnob( "releaseKnob", "Release", this, 20, 200, 50 );
    AddComponent( releaseKnob );
    releaseKnob.SetWantsMouseNotifications( false );
-   releaseKnob.SetPosition( 8, 128 );
+   releaseKnob.SetPosition( 8, 113 );
    releaseKnob.SetSize( 41, 41 );
    releaseKnob.SetSkin( "Dial Yellow" );
    releaseKnob.SetRange( 20, 200, 50, false, 0 );
@@ -76,7 +76,7 @@ void InitializeControls()
    gateThresholdKnob = new VoltageKnob( "gateThresholdKnob", "Gate Threshold", this, -60, -12, -60 );
    AddComponent( gateThresholdKnob );
    gateThresholdKnob.SetWantsMouseNotifications( false );
-   gateThresholdKnob.SetPosition( 8, 192 );
+   gateThresholdKnob.SetPosition( 8, 163 );
    gateThresholdKnob.SetSize( 41, 41 );
    gateThresholdKnob.SetSkin( "Dial Orange" );
    gateThresholdKnob.SetRange( -60, -12, -60, false, 0 );
@@ -88,7 +88,7 @@ void InitializeControls()
    targetVolumeKnob = new VoltageKnob( "targetVolumeKnob", "Target Volume", this, -12, 0, -6 );
    AddComponent( targetVolumeKnob );
    targetVolumeKnob.SetWantsMouseNotifications( false );
-   targetVolumeKnob.SetPosition( 8, 256 );
+   targetVolumeKnob.SetPosition( 8, 212 );
    targetVolumeKnob.SetSize( 41, 41 );
    targetVolumeKnob.SetSkin( "Dial Red" );
    targetVolumeKnob.SetRange( -12, 0, -6, false, 0 );
@@ -177,7 +177,7 @@ void InitializeControls()
    textLabel4 = new VoltageLabel( "textLabel4", "textLabel4", this, "RELEASE" );
    AddComponent( textLabel4 );
    textLabel4.SetWantsMouseNotifications( false );
-   textLabel4.SetPosition( 52, 140 );
+   textLabel4.SetPosition( 52, 125 );
    textLabel4.SetSize( 46, 15 );
    textLabel4.SetEditable( false, false );
    textLabel4.SetJustificationFlags( VoltageLabel.Justification.Left );
@@ -198,7 +198,7 @@ void InitializeControls()
    textLabel5 = new VoltageLabel( "textLabel5", "textLabel5", this, "GATE" );
    AddComponent( textLabel5 );
    textLabel5.SetWantsMouseNotifications( false );
-   textLabel5.SetPosition( 52, 204 );
+   textLabel5.SetPosition( 52, 175 );
    textLabel5.SetSize( 46, 15 );
    textLabel5.SetEditable( false, false );
    textLabel5.SetJustificationFlags( VoltageLabel.Justification.Left );
@@ -219,7 +219,7 @@ void InitializeControls()
    textLabel6 = new VoltageLabel( "textLabel6", "textLabel6", this, "TARGET" );
    AddComponent( textLabel6 );
    textLabel6.SetWantsMouseNotifications( false );
-   textLabel6.SetPosition( 52, 268 );
+   textLabel6.SetPosition( 52, 224 );
    textLabel6.SetSize( 46, 15 );
    textLabel6.SetEditable( false, false );
    textLabel6.SetJustificationFlags( VoltageLabel.Justification.Left );
@@ -236,6 +236,48 @@ void InitializeControls()
    textLabel6.SetHasCustomTextHoverColor( false );
    textLabel6.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
    textLabel6.SetFont( "Arial Black", 10, true, false );
+
+   textLabel13 = new VoltageLabel( "textLabel13", "textLabel13", this, "HP" );
+   AddComponent( textLabel13 );
+   textLabel13.SetWantsMouseNotifications( false );
+   textLabel13.SetPosition( 63, 292 );
+   textLabel13.SetSize( 29, 15 );
+   textLabel13.SetEditable( false, false );
+   textLabel13.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel13.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel13.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel13.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel13.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel13.SetBorderSize( 1 );
+   textLabel13.SetMultiLineEdit( false );
+   textLabel13.SetIsNumberEditor( false );
+   textLabel13.SetNumberEditorRange( 0, 100 );
+   textLabel13.SetNumberEditorInterval( 1 );
+   textLabel13.SetNumberEditorUsesMouseWheel( false );
+   textLabel13.SetHasCustomTextHoverColor( false );
+   textLabel13.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel13.SetFont( "Arial Black", 10, true, false );
+
+   textLabel14 = new VoltageLabel( "textLabel14", "textLabel14", this, "CEILING" );
+   AddComponent( textLabel14 );
+   textLabel14.SetWantsMouseNotifications( false );
+   textLabel14.SetPosition( 0, 292 );
+   textLabel14.SetSize( 61, 15 );
+   textLabel14.SetEditable( false, false );
+   textLabel14.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel14.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel14.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel14.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel14.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel14.SetBorderSize( 1 );
+   textLabel14.SetMultiLineEdit( false );
+   textLabel14.SetIsNumberEditor( false );
+   textLabel14.SetNumberEditorRange( 0, 100 );
+   textLabel14.SetNumberEditorInterval( 1 );
+   textLabel14.SetNumberEditorUsesMouseWheel( false );
+   textLabel14.SetHasCustomTextHoverColor( false );
+   textLabel14.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel14.SetFont( "Arial Black", 10, true, false );
 
    textLabel7 = new VoltageLabel( "textLabel7", "textLabel7", this, "L (M)" );
    AddComponent( textLabel7 );
@@ -362,6 +404,32 @@ void InitializeControls()
    textLabel12.SetHasCustomTextHoverColor( false );
    textLabel12.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
    textLabel12.SetFont( "Arial Black", 10, true, false );
+
+   hpfKnob = new VoltageKnob( "hpfKnob", "High-pass Filter", this, 20, 200, 20 );
+   AddComponent( hpfKnob );
+   hpfKnob.SetWantsMouseNotifications( false );
+   hpfKnob.SetPosition( 65, 265 );
+   hpfKnob.SetSize( 25, 25 );
+   hpfKnob.SetSkin( "Dial Sky" );
+   hpfKnob.SetRange( 20, 200, 20, false, 0 );
+   hpfKnob.SetKnobParams( 215, 145 );
+   hpfKnob.SetUnits( "hz" );
+   hpfKnob.DisplayValueInPercent( false );
+   hpfKnob.SetKnobAdjustsRing( true );
+   hpfKnob.SetMidpointValue( 50 );
+
+   ceilingKnob = new VoltageKnob( "ceilingKnob", "Ceiling", this, -6, -0.1, -1 );
+   AddComponent( ceilingKnob );
+   ceilingKnob.SetWantsMouseNotifications( false );
+   ceilingKnob.SetPosition( 19, 265 );
+   ceilingKnob.SetSize( 25, 25 );
+   ceilingKnob.SetSkin( "Dial Blue" );
+   ceilingKnob.SetRange( -6, -0.1, -1, false, 0 );
+   ceilingKnob.SetKnobParams( 215, 145 );
+   ceilingKnob.SetUnits( "dBFS" );
+   ceilingKnob.DisplayValueInPercent( false );
+   ceilingKnob.SetKnobAdjustsRing( true );
+   ceilingKnob.SetMidpointValue( -1 );
 }
 
 
@@ -418,6 +486,8 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
          if (component == releaseKnob) setReleaseMs(doubleValue);
          if (component == gateThresholdKnob) setGateThresholdDbfs(doubleValue);
          if (component == targetVolumeKnob) setTargetDbfs(doubleValue);
+         if (component== hpfKnob) setHpfFrequency(doubleValue);
+         if (component == ceilingKnob) setCeilingDbfs(doubleValue);
       }
       break;
    
@@ -780,12 +850,16 @@ public void SetStateInformationForVariations(byte[] stateInfo)
 
 
 // Auto-generated variables
+private VoltageKnob ceilingKnob;
+private VoltageKnob hpfKnob;
 private VoltageLabel textLabel12;
 private VoltageLabel textLabel11;
 private VoltageLabel textLabel10;
 private VoltageLabel textLabel9;
 private VoltageLabel textLabel8;
 private VoltageLabel textLabel7;
+private VoltageLabel textLabel14;
+private VoltageLabel textLabel13;
 private VoltageLabel textLabel6;
 private VoltageLabel textLabel5;
 private VoltageLabel textLabel4;
@@ -828,20 +902,30 @@ private void setTargetDbfs(double targetDbfs) {
    right.setTargetDbfs(targetDbfs);
 }
 
+private void setHpfFrequency(double frequencyHz) {
+   left.setHpfFrequency(frequencyHz);
+   right.setHpfFrequency(frequencyHz);
+}
+
+private void setCeilingDbfs(double dbfs) {
+   left.setCeilingDbfs(dbfs);
+   right.setCeilingDbfs(dbfs);
+}
+
 private static final class Maximiser {
 
-   private static final double PEAK_THRESHOLD = Math.pow(10, -1.0 / 20.0);
-   private static final double PEAK_RANGE = 1.0 - PEAK_THRESHOLD;
-   private static final double PEAK_RANGE_RECIPROCAL = 1.0 / PEAK_RANGE;
-   private static final double PEAK_RANGE_SCALING = 1.0 / PEAK_RANGE;
-   
    private double attackAlpha;
    private double releaseAlpha;
    private double gateThresholdDbfs;
    private double gateTransitionDbfs;
+   
+   private double peakThreshold;
+   private double peakRange;
+   private double peakRangeReciprocal;
    private double targetDbfs;
    private double meanSquare;
    private double rangeReciprocal;
+   private final HighPassFilter hpf = new HighPassFilter();
 
    public void setGateThresholdDbfs(double gateThresholdDbfs) {
       this.gateThresholdDbfs = gateThresholdDbfs;
@@ -864,6 +948,16 @@ private static final class Maximiser {
    public void setTargetDbfs(double targetDbfs) {
       this.targetDbfs = targetDbfs;
    }
+   
+   public void setCeilingDbfs(double dbfs) {
+      peakThreshold = Math.pow(10, dbfs / 20.0);
+      peakRange = 1.0 - peakThreshold;
+      peakRangeReciprocal = 1.0 / peakRange;
+   }
+   
+   public void setHpfFrequency(double frequencyHz) {
+      hpf.setCutoff(frequencyHz);
+   }
 
    private double getGateFactor(double currentDbfs) {
       if (currentDbfs < gateTransitionDbfs) return 0.0;
@@ -874,8 +968,10 @@ private static final class Maximiser {
    }
    
    public double processSample(double sample) {
-      // RMS calculation
-      double square = sample * sample;
+      double filteredSample = hpf.process(sample);
+      
+      // RMS calculation using filtered signal
+      double square = filteredSample * filteredSample;
       double alpha = square > meanSquare
          ? attackAlpha
          : releaseAlpha;
@@ -896,15 +992,39 @@ private static final class Maximiser {
       double gained = sample * gain;
       double absGained = Math.abs(gained);
       
-      if (absGained < PEAK_THRESHOLD) return gained;
+      if (absGained < peakThreshold) return gained;
       
-      double position = absGained - PEAK_THRESHOLD;
-      position = position / (1.0 + position * PEAK_RANGE_RECIPROCAL);
+      double position = absGained - peakThreshold;
+      position = position / (1.0 + position * peakRangeReciprocal);
       return Math.signum(gained) *
-         (PEAK_THRESHOLD + position);
+         (peakThreshold + position);
    }
 }
 
+public static class HighPassFilter {
+    private double prevInput = 0.0;
+    private double prevOutput = 0.0;
+    private double alpha;
+    
+    /**
+     * Process a single sample
+     * @param input Input sample
+     * @return Filtered output sample
+     */
+    public double process(double input) {
+        double output = alpha * (prevOutput + input - prevInput);
+        prevInput = input;
+        prevOutput = output;
+        return output;
+    }
+    
+    public void setCutoff(double cutoffHz) {
+        double rc = 1.0 / (2.0 * Math.PI * cutoffHz);
+        double dt = 1.0 / 48000;
+        alpha = rc / (rc + dt);
+    }
+    
+}
 
 //[/user-code-and-variables]
 }

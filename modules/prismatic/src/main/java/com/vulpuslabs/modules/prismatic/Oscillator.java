@@ -54,6 +54,7 @@ public final class Oscillator {
        highRes = nastiness > 0;
        linearInterpolate = nastiness > 1;
        filter = nastiness > 2;
+       lpf.reset();
     }
 
     private int calculateIncrement(double vOct, double fm) {

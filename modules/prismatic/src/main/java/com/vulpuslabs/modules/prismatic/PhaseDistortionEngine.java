@@ -125,7 +125,9 @@ public class PhaseDistortionEngine {
         int source = sourceLookup[phaseAccumulator];
         int target = targetLookup[phaseAccumulator];
 
-        return sineTable[((source << 8) + (target - source) * interpolation) >> 8];
+        int interpolated = ((source << 8) + (target - source) * interpolation);
+        
+        return getSine(interpolated >> 8, interpolated & 0xFF);
     }
 
 }

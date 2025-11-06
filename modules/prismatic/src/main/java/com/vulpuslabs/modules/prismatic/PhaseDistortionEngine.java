@@ -107,7 +107,7 @@ public class PhaseDistortionEngine {
         if (fraction == 0) return a;
 
         int b = sineTable[(phaseAccumulator + 1) & 0xFF];
-        return interpolate(a, b, fraction) >> 8;
+        return ((a << 8) + (b - a) * fraction) >> 8;
     }
 
     public int getInterpolated(int left, int right, int interpolation, int phaseAccumulator, int fraction) {
@@ -118,17 +118,14 @@ public class PhaseDistortionEngine {
         if (fraction == 0) return a;
 
         int b = getInterpolated(sourceLookup, targetLookup, interpolation, (phaseAccumulator + 1) & 0xff);
-        return interpolate(a, b, fraction) >> 8;
+        return ((a << 8) + (b - a) * fraction) >> 8;
     }
 
     private int getInterpolated(int[] sourceLookup, int[] targetLookup, int interpolation, int phaseAccumulator) {
         int source = sourceLookup[phaseAccumulator];
         int target = targetLookup[phaseAccumulator];
 
-        return sineTable[interpolate(source, target, interpolation) >> 8];
+        return sineTable[((source << 8) + (target - source) * interpolation) >> 8];
     }
 
-    private int interpolate(int a, int b, int amt) {
-        return (a << 8) + (b - a) * amt;
-    }
 }

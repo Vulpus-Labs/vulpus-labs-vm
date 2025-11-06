@@ -1,6 +1,8 @@
 .DS_Store
 *.bak
 
+**/.gradle
+
 # IntelliJ IDEA
 .idea/
 *.iml

@@ -103,15 +103,11 @@ public class PhaseDistortionEngine {
     }
 
     public int getSine(int phaseAccumulator, int fraction) {
-        int a = getSine(phaseAccumulator);
+        int a = sineTable[phaseAccumulator];
         if (fraction == 0) return a;
-        
-        int b = getSine((phaseAccumulator + 1) & 0xFF);
-        return (a * (256 - fraction) + b * fraction) >> 8;
-    }
 
-    public int getSine(int phaseAccumulator) {
-        return sineTable[phaseAccumulator];
+        int b = sineTable[(phaseAccumulator + 1) & 0xFF];
+        return interpolate(a, b, fraction) >> 8;
     }
 
     public int getInterpolated(int left, int right, int interpolation, int phaseAccumulator, int fraction) {
@@ -120,20 +116,19 @@ public class PhaseDistortionEngine {
         
         int a = getInterpolated(sourceLookup, targetLookup, interpolation, phaseAccumulator);
         if (fraction == 0) return a;
-        
-        int b = getInterpolated(sourceLookup, targetLookup, interpolation, (phaseAccumulator + 1) & 0xFF);
-        return (a * (256 - fraction) + b * fraction) >> 8;
+
+        int b = getInterpolated(sourceLookup, targetLookup, interpolation, (phaseAccumulator + 1) & 0xff);
+        return interpolate(a, b, fraction) >> 8;
     }
 
-    public int getInterpolated(int[] sourceLookup, int[] targetLookup, int interpolation, int phaseAccumulator) {
-        int phase = phaseAccumulator;
-        int source = sourceLookup[phase];
-        int target = targetLookup[phase];
+    private int getInterpolated(int[] sourceLookup, int[] targetLookup, int interpolation, int phaseAccumulator) {
+        int source = sourceLookup[phaseAccumulator];
+        int target = targetLookup[phaseAccumulator];
 
-        // Interpolate between left and right profiles using DCW parameter
-        // Fixed-point 8-bit interpolation
-        int distortedPhase = (source * (255 - interpolation) + target * interpolation) >> 8;
+        return sineTable[interpolate(source, target, interpolation) >> 8];
+    }
 
-        return sineTable[distortedPhase & 0xFF];
+    private int interpolate(int a, int b, int amt) {
+        return (a << 8) + (b - a) * amt;
     }
 }

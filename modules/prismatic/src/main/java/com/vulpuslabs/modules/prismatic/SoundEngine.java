@@ -14,7 +14,7 @@ public class SoundEngine {
         this.pitchControl = pitchControl;
         this.engine = PhaseDistortionEngine.create();
         this.monoOsc = new Oscillator(engine, pitchControl);
-        this.polyOsc = makeOscillators(16, engine, pitchControl);
+        this.polyOsc = makeOscillators(engine, pitchControl);
     }
 
     public void setBaseDcw(double baseDcw) {
@@ -25,9 +25,9 @@ public class SoundEngine {
         this.dcwModAmount = dcwModAmount;
     }
 
-    private static Oscillator[] makeOscillators(int count, PhaseDistortionEngine engine, PitchControl pitchControl) {
-        Oscillator[] result = new Oscillator[count];
-        for (int i=0; i<count; i++) {
+    private static Oscillator[] makeOscillators(PhaseDistortionEngine engine, PitchControl pitchControl) {
+        Oscillator[] result = new Oscillator[16];
+        for (int i=0; i<16; i++) {
             result[i] = new Oscillator(engine, pitchControl);
         }
         return result;

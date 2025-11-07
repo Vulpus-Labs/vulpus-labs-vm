@@ -31,7 +31,7 @@ public Prismatic( long moduleID, VoltageObjects voltageObjects )
 
 
    canBeBypassed = false;
-   SetSkin( "338b01787c2642b0b171aa421177ae05" );
+   SetSkin( "3d68bfd213024fa3a088c6997d4c5811" );
 }
 
 void InitializeControls()

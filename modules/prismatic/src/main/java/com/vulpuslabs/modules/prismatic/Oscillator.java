@@ -9,7 +9,7 @@ public final class Oscillator {
     private static final int SQUARE_SAW_SINE = 1;
     private static final int SINE_SQUARE_SAW = 2;
     private static final int RESO = 3;
-    private static final int MAX_FREQ_MULT = 256 * 3;
+    private static final int MAX_FREQ_MULT = 256 * 4;
 
     private static final double SAMPLE_SCALING = 5.0 / 128.0;
     public static final double VOCT_TO_INCREMENT = (65.40639132514966 / 16000.0) * 65536.0;
@@ -171,8 +171,8 @@ public final class Oscillator {
             resoPhase = 0;
         }
 
-		  int resoPhaseIndex = (resoPhase >> 8);
-		  int resoPhaseFractionalIndex = highRes ? resoPhase & 0xFF : 0;
+        int resoPhaseIndex = (resoPhase >> 8);
+        int resoPhaseFractionalIndex = highRes ? resoPhase & 0xFF : 0;
         int sample = engine.getSine(resoPhaseIndex, resoPhaseFractionalIndex);
         sample = (sample * (256 - (phase >> 8))) >> 8;
         return sample * SAMPLE_SCALING;

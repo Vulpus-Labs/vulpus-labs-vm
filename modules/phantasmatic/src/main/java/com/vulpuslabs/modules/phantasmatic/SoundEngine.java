@@ -80,7 +80,7 @@ public class SoundEngine {
 
     public double processMono(double voct, double fm, double dcw) {
         double monoPitch = pitchControl.adjustPitch(voct, fm);
-        double targetDcw = Math.max(0.0, Math.min(1.0, baseDcw + (dcwModAmount * dcw)));
+        double targetDcw = Math.max(-1.0, Math.min(1.0, baseDcw + (dcwModAmount * dcw)));
 
         // Apply exponential smoothing to DCW to eliminate zipper noise
         smoothedMonoDcw += (targetDcw - smoothedMonoDcw) * DCW_SMOOTHING_COEFF;
@@ -94,7 +94,7 @@ public class SoundEngine {
 
     public double processPoly(int channel, double voct, double fm, double dcw) {
         double polyPitch = pitchControl.adjustPitch(voct, fm);
-        double targetDcw = Math.max(0.0, Math.min(1.0, baseDcw + (dcwModAmount * dcw)));
+        double targetDcw = Math.max(-1.0, Math.min(1.0, baseDcw + (dcwModAmount * dcw)));
 
         // Apply exponential smoothing to DCW to eliminate zipper noise
         smoothedPolyDcw[channel] += (targetDcw - smoothedPolyDcw[channel]) * DCW_SMOOTHING_COEFF;

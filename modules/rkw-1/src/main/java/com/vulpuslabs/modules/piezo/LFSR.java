@@ -30,15 +30,19 @@ public class LFSR {
         if (lsb == 1) {
             register ^= POLYNOMIAL;
         }
-        output = (register & 1) == 1;
     }
 
     /**
      * Get the current output bit.
      * @return true for 1, false for 0
      */
-    public boolean getOutput() {
-        return output;
+    public boolean getBoolean() {
+        return (register & 1) == 1;
+    }
+
+    public byte getNextByte() {
+        clock();
+        return (byte) (register & 0xFF);
     }
 
     /**

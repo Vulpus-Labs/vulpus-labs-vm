@@ -12,8 +12,6 @@ import java.awt.*;
 
 //[user-imports]   Add your own imports here
 import com.vulpuslabs.modules.piezo.*;
-
-
 //[/user-imports]
 
 
@@ -31,7 +29,7 @@ public RKW1( long moduleID, VoltageObjects voltageObjects )
 
 
    canBeBypassed = false;
-   SetSkin( "fa1216ce1fd04ede970a0e17ec4f5250" );
+   SetSkin( "3a144a05948f46139802095cd852c9cc" );
 }
 
 void InitializeControls()
@@ -157,6 +155,13 @@ void InitializeControls()
    resetPhaseSwitch.SetPosition( 94, 202 );
    resetPhaseSwitch.SetSize( 37, 15 );
    resetPhaseSwitch.SetSkin( "Rocker Switch Plastic Black Hor" );
+
+   outputModeSwitch = new VoltageSwitch( "outputModeSwitch", "Output Mode", this, 0 );
+   AddComponent( outputModeSwitch );
+   outputModeSwitch.SetWantsMouseNotifications( false );
+   outputModeSwitch.SetPosition( 25, 324 );
+   outputModeSwitch.SetSize( 25, 10 );
+   outputModeSwitch.SetSkin( "Rocker Switch Plastic Black Hor" );
 
    textLabel1 = new VoltageLabel( "textLabel1", "textLabel1", this, "RKW-1" );
    AddComponent( textLabel1 );
@@ -389,6 +394,48 @@ void InitializeControls()
    textLabel11.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
    textLabel11.SetFont( "Arial Black", 10, false, false );
 
+   textLabel22 = new VoltageLabel( "textLabel22", "textLabel22", this, "BP" );
+   AddComponent( textLabel22 );
+   textLabel22.SetWantsMouseNotifications( false );
+   textLabel22.SetPosition( 8, 322 );
+   textLabel22.SetSize( 15, 14 );
+   textLabel22.SetEditable( false, false );
+   textLabel22.SetJustificationFlags( VoltageLabel.Justification.Right );
+   textLabel22.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel22.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel22.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel22.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel22.SetBorderSize( 1 );
+   textLabel22.SetMultiLineEdit( false );
+   textLabel22.SetIsNumberEditor( false );
+   textLabel22.SetNumberEditorRange( 0, 100 );
+   textLabel22.SetNumberEditorInterval( 1 );
+   textLabel22.SetNumberEditorUsesMouseWheel( false );
+   textLabel22.SetHasCustomTextHoverColor( false );
+   textLabel22.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel22.SetFont( "Arial Black", 10, false, false );
+
+   textLabel23 = new VoltageLabel( "textLabel23", "textLabel23", this, "TV" );
+   AddComponent( textLabel23 );
+   textLabel23.SetWantsMouseNotifications( false );
+   textLabel23.SetPosition( 49, 322 );
+   textLabel23.SetSize( 13, 14 );
+   textLabel23.SetEditable( false, false );
+   textLabel23.SetJustificationFlags( VoltageLabel.Justification.Right );
+   textLabel23.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel23.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel23.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel23.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel23.SetBorderSize( 1 );
+   textLabel23.SetMultiLineEdit( false );
+   textLabel23.SetIsNumberEditor( false );
+   textLabel23.SetNumberEditorRange( 0, 100 );
+   textLabel23.SetNumberEditorInterval( 1 );
+   textLabel23.SetNumberEditorUsesMouseWheel( false );
+   textLabel23.SetHasCustomTextHoverColor( false );
+   textLabel23.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel23.SetFont( "Arial Black", 10, false, false );
+
    textLabel12 = new VoltageLabel( "textLabel12", "textLabel12", this, "NTSC" );
    AddComponent( textLabel12 );
    textLabel12.SetWantsMouseNotifications( false );
@@ -409,118 +456,6 @@ void InitializeControls()
    textLabel12.SetHasCustomTextHoverColor( false );
    textLabel12.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
    textLabel12.SetFont( "Arial Black", 10, false, false );
-
-   textLabel13 = new VoltageLabel( "textLabel13", "textLabel13", this, "AUDIO BUDGET" );
-   AddComponent( textLabel13 );
-   textLabel13.SetWantsMouseNotifications( false );
-   textLabel13.SetPosition( 4, 224 );
-   textLabel13.SetSize( 30, 27 );
-   textLabel13.SetEditable( false, false );
-   textLabel13.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
-   textLabel13.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
-   textLabel13.SetColor( new Color( 255, 255, 255, 255 ) );
-   textLabel13.SetBkColor( new Color( 65, 65, 65, 0 ) );
-   textLabel13.SetBorderColor( new Color( 0, 0, 0, 0 ) );
-   textLabel13.SetBorderSize( 1 );
-   textLabel13.SetMultiLineEdit( false );
-   textLabel13.SetIsNumberEditor( false );
-   textLabel13.SetNumberEditorRange( 0, 100 );
-   textLabel13.SetNumberEditorInterval( 1 );
-   textLabel13.SetNumberEditorUsesMouseWheel( false );
-   textLabel13.SetHasCustomTextHoverColor( false );
-   textLabel13.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
-   textLabel13.SetFont( "Arial Black", 10, false, false );
-
-   textLabel14 = new VoltageLabel( "textLabel14", "textLabel14", this, "TICK LENGTH" );
-   AddComponent( textLabel14 );
-   textLabel14.SetWantsMouseNotifications( false );
-   textLabel14.SetPosition( 50, 224 );
-   textLabel14.SetSize( 30, 27 );
-   textLabel14.SetEditable( false, false );
-   textLabel14.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
-   textLabel14.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
-   textLabel14.SetColor( new Color( 255, 255, 255, 255 ) );
-   textLabel14.SetBkColor( new Color( 65, 65, 65, 0 ) );
-   textLabel14.SetBorderColor( new Color( 0, 0, 0, 0 ) );
-   textLabel14.SetBorderSize( 1 );
-   textLabel14.SetMultiLineEdit( false );
-   textLabel14.SetIsNumberEditor( false );
-   textLabel14.SetNumberEditorRange( 0, 100 );
-   textLabel14.SetNumberEditorInterval( 1 );
-   textLabel14.SetNumberEditorUsesMouseWheel( false );
-   textLabel14.SetHasCustomTextHoverColor( false );
-   textLabel14.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
-   textLabel14.SetFont( "Arial Black", 10, false, false );
-
-   textLabel15 = new VoltageLabel( "textLabel15", "textLabel15", this, "PHASE RESET" );
-   AddComponent( textLabel15 );
-   textLabel15.SetWantsMouseNotifications( false );
-   textLabel15.SetPosition( 95, 224 );
-   textLabel15.SetSize( 30, 27 );
-   textLabel15.SetEditable( false, false );
-   textLabel15.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
-   textLabel15.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
-   textLabel15.SetColor( new Color( 255, 255, 255, 255 ) );
-   textLabel15.SetBkColor( new Color( 65, 65, 65, 0 ) );
-   textLabel15.SetBorderColor( new Color( 0, 0, 0, 0 ) );
-   textLabel15.SetBorderSize( 1 );
-   textLabel15.SetMultiLineEdit( false );
-   textLabel15.SetIsNumberEditor( false );
-   textLabel15.SetNumberEditorRange( 0, 100 );
-   textLabel15.SetNumberEditorInterval( 1 );
-   textLabel15.SetNumberEditorUsesMouseWheel( false );
-   textLabel15.SetHasCustomTextHoverColor( false );
-   textLabel15.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
-   textLabel15.SetFont( "Arial Black", 10, false, false );
-
-   mixModeSwitch = new VoltageSwitch( "mixModeSwitch", "Mix Mode", this, 0 );
-   AddComponent( mixModeSwitch );
-   mixModeSwitch.SetWantsMouseNotifications( false );
-   mixModeSwitch.SetPosition( 45, 260 );
-   mixModeSwitch.SetSize( 52, 15 );
-   mixModeSwitch.SetSkin( "4-State Slide Horiz" );
-
-   textLabel16 = new VoltageLabel( "textLabel16", "textLabel16", this, "OR" );
-   AddComponent( textLabel16 );
-   textLabel16.SetWantsMouseNotifications( false );
-   textLabel16.SetPosition( 4, 296 );
-   textLabel16.SetSize( 30, 15 );
-   textLabel16.SetEditable( false, false );
-   textLabel16.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
-   textLabel16.SetJustificationFlags( VoltageLabel.Justification.Top );
-   textLabel16.SetColor( new Color( 255, 255, 255, 255 ) );
-   textLabel16.SetBkColor( new Color( 65, 65, 65, 0 ) );
-   textLabel16.SetBorderColor( new Color( 0, 0, 0, 0 ) );
-   textLabel16.SetBorderSize( 1 );
-   textLabel16.SetMultiLineEdit( false );
-   textLabel16.SetIsNumberEditor( false );
-   textLabel16.SetNumberEditorRange( 0, 100 );
-   textLabel16.SetNumberEditorInterval( 1 );
-   textLabel16.SetNumberEditorUsesMouseWheel( false );
-   textLabel16.SetHasCustomTextHoverColor( false );
-   textLabel16.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
-   textLabel16.SetFont( "Arial Black", 10, false, false );
-
-   textLabel17 = new VoltageLabel( "textLabel17", "textLabel17", this, "XOR" );
-   AddComponent( textLabel17 );
-   textLabel17.SetWantsMouseNotifications( false );
-   textLabel17.SetPosition( 34, 296 );
-   textLabel17.SetSize( 30, 15 );
-   textLabel17.SetEditable( false, false );
-   textLabel17.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
-   textLabel17.SetJustificationFlags( VoltageLabel.Justification.Top );
-   textLabel17.SetColor( new Color( 255, 255, 255, 255 ) );
-   textLabel17.SetBkColor( new Color( 65, 65, 65, 0 ) );
-   textLabel17.SetBorderColor( new Color( 0, 0, 0, 0 ) );
-   textLabel17.SetBorderSize( 1 );
-   textLabel17.SetMultiLineEdit( false );
-   textLabel17.SetIsNumberEditor( false );
-   textLabel17.SetNumberEditorRange( 0, 100 );
-   textLabel17.SetNumberEditorInterval( 1 );
-   textLabel17.SetNumberEditorUsesMouseWheel( false );
-   textLabel17.SetHasCustomTextHoverColor( false );
-   textLabel17.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
-   textLabel17.SetFont( "Arial Black", 10, false, false );
 
    textLabel18 = new VoltageLabel( "textLabel18", "textLabel18", this, "INTER LEAVE" );
    AddComponent( textLabel18 );
@@ -585,6 +520,90 @@ void InitializeControls()
    textLabel20.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
    textLabel20.SetFont( "Arial Black", 10, false, false );
 
+   textLabel13 = new VoltageLabel( "textLabel13", "textLabel13", this, "AUDIO BUDGET" );
+   AddComponent( textLabel13 );
+   textLabel13.SetWantsMouseNotifications( false );
+   textLabel13.SetPosition( 4, 224 );
+   textLabel13.SetSize( 30, 27 );
+   textLabel13.SetEditable( false, false );
+   textLabel13.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel13.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel13.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel13.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel13.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel13.SetBorderSize( 1 );
+   textLabel13.SetMultiLineEdit( false );
+   textLabel13.SetIsNumberEditor( false );
+   textLabel13.SetNumberEditorRange( 0, 100 );
+   textLabel13.SetNumberEditorInterval( 1 );
+   textLabel13.SetNumberEditorUsesMouseWheel( false );
+   textLabel13.SetHasCustomTextHoverColor( false );
+   textLabel13.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel13.SetFont( "Arial Black", 10, false, false );
+
+   textLabel16 = new VoltageLabel( "textLabel16", "textLabel16", this, "OR" );
+   AddComponent( textLabel16 );
+   textLabel16.SetWantsMouseNotifications( false );
+   textLabel16.SetPosition( 4, 296 );
+   textLabel16.SetSize( 30, 15 );
+   textLabel16.SetEditable( false, false );
+   textLabel16.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel16.SetJustificationFlags( VoltageLabel.Justification.Top );
+   textLabel16.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel16.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel16.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel16.SetBorderSize( 1 );
+   textLabel16.SetMultiLineEdit( false );
+   textLabel16.SetIsNumberEditor( false );
+   textLabel16.SetNumberEditorRange( 0, 100 );
+   textLabel16.SetNumberEditorInterval( 1 );
+   textLabel16.SetNumberEditorUsesMouseWheel( false );
+   textLabel16.SetHasCustomTextHoverColor( false );
+   textLabel16.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel16.SetFont( "Arial Black", 10, false, false );
+
+   textLabel17 = new VoltageLabel( "textLabel17", "textLabel17", this, "XOR" );
+   AddComponent( textLabel17 );
+   textLabel17.SetWantsMouseNotifications( false );
+   textLabel17.SetPosition( 34, 296 );
+   textLabel17.SetSize( 30, 15 );
+   textLabel17.SetEditable( false, false );
+   textLabel17.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel17.SetJustificationFlags( VoltageLabel.Justification.Top );
+   textLabel17.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel17.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel17.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel17.SetBorderSize( 1 );
+   textLabel17.SetMultiLineEdit( false );
+   textLabel17.SetIsNumberEditor( false );
+   textLabel17.SetNumberEditorRange( 0, 100 );
+   textLabel17.SetNumberEditorInterval( 1 );
+   textLabel17.SetNumberEditorUsesMouseWheel( false );
+   textLabel17.SetHasCustomTextHoverColor( false );
+   textLabel17.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel17.SetFont( "Arial Black", 10, false, false );
+
+   textLabel14 = new VoltageLabel( "textLabel14", "textLabel14", this, "TICK LENGTH" );
+   AddComponent( textLabel14 );
+   textLabel14.SetWantsMouseNotifications( false );
+   textLabel14.SetPosition( 50, 224 );
+   textLabel14.SetSize( 30, 27 );
+   textLabel14.SetEditable( false, false );
+   textLabel14.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel14.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel14.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel14.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel14.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel14.SetBorderSize( 1 );
+   textLabel14.SetMultiLineEdit( false );
+   textLabel14.SetIsNumberEditor( false );
+   textLabel14.SetNumberEditorRange( 0, 100 );
+   textLabel14.SetNumberEditorInterval( 1 );
+   textLabel14.SetNumberEditorUsesMouseWheel( false );
+   textLabel14.SetHasCustomTextHoverColor( false );
+   textLabel14.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel14.SetFont( "Arial Black", 10, false, false );
+
    textLabel21 = new VoltageLabel( "textLabel21", "textLabel21", this, "OUTPUT" );
    AddComponent( textLabel21 );
    textLabel21.SetWantsMouseNotifications( false );
@@ -605,6 +624,66 @@ void InitializeControls()
    textLabel21.SetHasCustomTextHoverColor( false );
    textLabel21.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
    textLabel21.SetFont( "Arial Black", 10, false, false );
+
+   textLabel15 = new VoltageLabel( "textLabel15", "textLabel15", this, "PHASE RESET" );
+   AddComponent( textLabel15 );
+   textLabel15.SetWantsMouseNotifications( false );
+   textLabel15.SetPosition( 95, 224 );
+   textLabel15.SetSize( 30, 27 );
+   textLabel15.SetEditable( false, false );
+   textLabel15.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel15.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel15.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel15.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel15.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel15.SetBorderSize( 1 );
+   textLabel15.SetMultiLineEdit( false );
+   textLabel15.SetIsNumberEditor( false );
+   textLabel15.SetNumberEditorRange( 0, 100 );
+   textLabel15.SetNumberEditorInterval( 1 );
+   textLabel15.SetNumberEditorUsesMouseWheel( false );
+   textLabel15.SetHasCustomTextHoverColor( false );
+   textLabel15.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel15.SetFont( "Arial Black", 10, false, false );
+
+   mixModeSwitch = new VoltageSwitch( "mixModeSwitch", "Mix Mode", this, 0 );
+   AddComponent( mixModeSwitch );
+   mixModeSwitch.SetWantsMouseNotifications( false );
+   mixModeSwitch.SetPosition( 45, 260 );
+   mixModeSwitch.SetSize( 52, 15 );
+   mixModeSwitch.SetSkin( "4-State Slide Horiz" );
+
+   jitterKnob = new VoltageKnob( "jitterKnob", "Jitter", this, 0, 1, 0 );
+   AddComponent( jitterKnob );
+   jitterKnob.SetWantsMouseNotifications( false );
+   jitterKnob.SetPosition( 117, 252 );
+   jitterKnob.SetSize( 20, 20 );
+   jitterKnob.SetSkin( "Plastic Black" );
+   jitterKnob.SetRange( 0, 1, 0, false, 0 );
+   jitterKnob.SetKnobParams( 215, 145 );
+   jitterKnob.DisplayValueInPercent( false );
+   jitterKnob.SetKnobAdjustsRing( true );
+
+   textLabel24 = new VoltageLabel( "textLabel24", "textLabel24", this, "JITTER" );
+   AddComponent( textLabel24 );
+   textLabel24.SetWantsMouseNotifications( false );
+   textLabel24.SetPosition( 110, 268 );
+   textLabel24.SetSize( 30, 27 );
+   textLabel24.SetEditable( false, false );
+   textLabel24.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel24.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel24.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel24.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel24.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel24.SetBorderSize( 1 );
+   textLabel24.SetMultiLineEdit( false );
+   textLabel24.SetIsNumberEditor( false );
+   textLabel24.SetNumberEditorRange( 0, 100 );
+   textLabel24.SetNumberEditorInterval( 1 );
+   textLabel24.SetNumberEditorUsesMouseWheel( false );
+   textLabel24.SetHasCustomTextHoverColor( false );
+   textLabel24.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel24.SetFont( "Arial Black", 10, false, false );
 }
 
 
@@ -663,6 +742,9 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
          if (component == tickLengthKnob) {
             engine.setTickLengthInCycles((int) doubleValue);
          }
+         if (component == jitterKnob) {
+            engine.setJitter(doubleValue);
+         }
       }
       break;
    
@@ -697,6 +779,12 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
                case 2 -> MixMode.INTERLEAVE;
                default -> MixMode.QUAD;
             });
+         }
+         if (component == outputModeSwitch) {
+            engine.setFilterProfile(
+               doubleValue == 0
+                  ? FilterProfile.PIEZO
+                  : FilterProfile.TV_SPEAKER);
          }
       }
       break;
@@ -948,9 +1036,14 @@ public String GetTooltipText( VoltageComponent component )
          case 1 -> "XOR all channels";
          case 2 -> "Interleave channels";
          default -> "Quad mode (four separate generators)";
-      };
+      }; 
    }
-
+   
+   if (component == outputModeSwitch) {
+      return component.GetValue() == 0.0
+         ? "Piezo Beeper"
+         : "TV Speaker";
+   }
 
    return super.GetTooltipText( component );
    //[/user-GetTooltipText]
@@ -1067,17 +1160,21 @@ public void SetStateInformationForVariations(byte[] stateInfo)
 
 
 // Auto-generated variables
+private VoltageLabel textLabel24;
+private VoltageKnob jitterKnob;
+private VoltageSwitch mixModeSwitch;
+private VoltageLabel textLabel15;
 private VoltageLabel textLabel21;
+private VoltageLabel textLabel14;
+private VoltageLabel textLabel17;
+private VoltageLabel textLabel16;
+private VoltageLabel textLabel13;
 private VoltageLabel textLabel20;
 private VoltageLabel textLabel19;
 private VoltageLabel textLabel18;
-private VoltageLabel textLabel17;
-private VoltageLabel textLabel16;
-private VoltageSwitch mixModeSwitch;
-private VoltageLabel textLabel15;
-private VoltageLabel textLabel14;
-private VoltageLabel textLabel13;
 private VoltageLabel textLabel12;
+private VoltageLabel textLabel23;
+private VoltageLabel textLabel22;
 private VoltageLabel textLabel11;
 private VoltageLabel textLabel10;
 private VoltageLabel textLabel9;
@@ -1089,6 +1186,7 @@ private VoltageLabel textLabel4;
 private VoltageLabel textLabel3;
 private VoltageLabel textLabel2;
 private VoltageLabel textLabel1;
+private VoltageSwitch outputModeSwitch;
 private VoltageSwitch resetPhaseSwitch;
 private VoltageKnob tickLengthKnob;
 private VoltageSwitch videoModeSwitch;
@@ -1108,7 +1206,7 @@ private VoltageAudioJack audioOut;
 
 
 //[user-code-and-variables]    Add your own variables and functions here
-private final SpectrumEngine engine = new SpectrumEngine();
+private final ClockRateEngine engine = new ClockRateEngine();
 
 
 

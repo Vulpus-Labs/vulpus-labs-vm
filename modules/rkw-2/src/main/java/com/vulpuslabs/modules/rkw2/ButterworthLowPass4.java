@@ -1,5 +1,4 @@
 package com.vulpuslabs.modules.rkw2;
-package com.vulpuslabs.modules.rkw2;
 
 /**
  * 4th-order Butterworth low-pass filter implemented as two cascaded biquad sections.

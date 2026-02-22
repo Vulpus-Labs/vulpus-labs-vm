@@ -19,7 +19,7 @@ public final class ClockRateEngine {
     private double syncAccumulatorMs = 0.0;
     private double tickRatePositionMs = 0.0;
     private double frequencyMult;
-    private DoubleUnaryOperator filter;
+    private DoubleUnaryOperator filter = FilterProfile.PIEZO.getFilter();
 
     private final double[] vocts = new double[4];
     private final int[] phaseDeltas = new int[4];
@@ -33,10 +33,6 @@ public final class ClockRateEngine {
         setTickLengthInCycles(50);
         setAudioBudgetPercent(100.0);
         fireSync();
-    }
-
-    public void setAntiAlias(boolean antiAlias) {
-        // Do nothing
     }
 
     public void setMixMode(MixMode mixMode) {

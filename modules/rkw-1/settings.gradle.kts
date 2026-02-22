@@ -1,2 +1,1 @@
-rootProject.name = "piezo"
-
+rootProject.name = "rkw-1"

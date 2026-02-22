@@ -1,4 +1,4 @@
-package com.vulpuslabs.rkw1;
+package com.vulpuslabs.rkw2;
 
 
 import voltage.controllers.*;
@@ -11,27 +11,27 @@ import voltage.effects.*;
 import java.awt.*;
 
 //[user-imports]   Add your own imports here
-import com.vulpuslabs.modules.piezo.*;
+import com.vulpuslabs.modules.rkw2.*;
 
 
 //[/user-imports]
 
 
-public class RKW1 extends VoltageModule
+public class RKW2 extends VoltageModule
 //[user-inheritance]
 //[/user-inheritance]
 {
 
 @SuppressWarnings("this-escape") 
-public RKW1( long moduleID, VoltageObjects voltageObjects )
+public RKW2( long moduleID, VoltageObjects voltageObjects )
 {
-   super( moduleID, voltageObjects, "RKW-1", ModuleType.ModuleType_Oscillators, 2.0 );
+   super( moduleID, voltageObjects, "RKW-2", ModuleType.ModuleType_Oscillators, 0.8 );
 
    InitializeControls();
 
 
    canBeBypassed = false;
-   SetSkin( "fa1216ce1fd04ede970a0e17ec4f5250" );
+   SetSkin( "b6b3e3abe2204d77b6c964526e2217ad" );
 }
 
 void InitializeControls()
@@ -40,93 +40,241 @@ void InitializeControls()
    audioOut = new VoltageAudioJack( "audioOut", "Audio Ou", this, JackType.JackType_AudioOutput );
    AddComponent( audioOut );
    audioOut.SetWantsMouseNotifications( false );
-   audioOut.SetPosition( 99, 306 );
-   audioOut.SetSize( 37, 37 );
-   audioOut.SetSkin( "Jack Straight" );
+   audioOut.SetPosition( 26, 265 );
+   audioOut.SetSize( 25, 25 );
+   audioOut.SetSkin( "Jack Round White Ring" );
 
-   voctIn1 = new VoltageAudioJack( "voctIn1", "V/Oct In 1", this, JackType.JackType_AudioInput );
-   AddComponent( voctIn1 );
-   voctIn1.SetWantsMouseNotifications( false );
-   voctIn1.SetPosition( 7, 68 );
-   voctIn1.SetSize( 37, 37 );
-   voctIn1.SetSkin( "Jack Straight" );
+   outputModeSwitch = new VoltageSwitch( "outputModeSwitch", "Output Mode", this, 0 );
+   AddComponent( outputModeSwitch );
+   outputModeSwitch.SetWantsMouseNotifications( false );
+   outputModeSwitch.SetPosition( 9, 267 );
+   outputModeSwitch.SetSize( 12, 21 );
+   outputModeSwitch.SetSkin( "2-State Slide Black" );
 
-   voctIn2 = new VoltageAudioJack( "voctIn2", "V/Oct In 2", this, JackType.JackType_AudioInput );
-   AddComponent( voctIn2 );
-   voctIn2.SetWantsMouseNotifications( false );
-   voctIn2.SetPosition( 7, 112 );
-   voctIn2.SetSize( 37, 37 );
-   voctIn2.SetSkin( "Jack Straight" );
+   textLabel1 = new VoltageLabel( "textLabel1", "textLabel1", this, "RKW-2" );
+   AddComponent( textLabel1 );
+   textLabel1.SetWantsMouseNotifications( false );
+   textLabel1.SetPosition( 0, 0 );
+   textLabel1.SetSize( 57, 15 );
+   textLabel1.SetEditable( false, false );
+   textLabel1.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel1.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel1.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel1.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel1.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel1.SetBorderSize( 1 );
+   textLabel1.SetMultiLineEdit( true );
+   textLabel1.SetIsNumberEditor( false );
+   textLabel1.SetNumberEditorRange( 0, 100 );
+   textLabel1.SetNumberEditorInterval( 1 );
+   textLabel1.SetNumberEditorUsesMouseWheel( false );
+   textLabel1.SetHasCustomTextHoverColor( false );
+   textLabel1.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel1.SetFont( "Arial Black", 10, false, false );
 
-   voctIn3 = new VoltageAudioJack( "voctIn3", "V/Oct In 3", this, JackType.JackType_AudioInput );
-   AddComponent( voctIn3 );
-   voctIn3.SetWantsMouseNotifications( false );
-   voctIn3.SetPosition( 6, 152 );
-   voctIn3.SetSize( 37, 37 );
-   voctIn3.SetSkin( "Jack Straight" );
+   textLabel2 = new VoltageLabel( "textLabel2", "textLabel2", this, "VULPUS LABS" );
+   AddComponent( textLabel2 );
+   textLabel2.SetWantsMouseNotifications( false );
+   textLabel2.SetPosition( 6, 328 );
+   textLabel2.SetSize( 46, 32 );
+   textLabel2.SetEditable( false, false );
+   textLabel2.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel2.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel2.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel2.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel2.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel2.SetBorderSize( 1 );
+   textLabel2.SetMultiLineEdit( true );
+   textLabel2.SetIsNumberEditor( false );
+   textLabel2.SetNumberEditorRange( 0, 100 );
+   textLabel2.SetNumberEditorInterval( 1 );
+   textLabel2.SetNumberEditorUsesMouseWheel( false );
+   textLabel2.SetHasCustomTextHoverColor( false );
+   textLabel2.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel2.SetFont( "Arial Black", 10, false, false );
 
-   voctIn4 = new VoltageAudioJack( "voctIn4", "V/Oct In 4", this, JackType.JackType_AudioInput );
-   AddComponent( voctIn4 );
-   voctIn4.SetWantsMouseNotifications( false );
-   voctIn4.SetPosition( 7, 189 );
-   voctIn4.SetSize( 37, 37 );
-   voctIn4.SetSkin( "Jack Straight" );
+   textLabel22 = new VoltageLabel( "textLabel22", "textLabel22", this, "BP" );
+   AddComponent( textLabel22 );
+   textLabel22.SetWantsMouseNotifications( false );
+   textLabel22.SetPosition( 8, 291 );
+   textLabel22.SetSize( 15, 14 );
+   textLabel22.SetEditable( false, false );
+   textLabel22.SetJustificationFlags( VoltageLabel.Justification.Right );
+   textLabel22.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel22.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel22.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel22.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel22.SetBorderSize( 1 );
+   textLabel22.SetMultiLineEdit( false );
+   textLabel22.SetIsNumberEditor( false );
+   textLabel22.SetNumberEditorRange( 0, 100 );
+   textLabel22.SetNumberEditorInterval( 1 );
+   textLabel22.SetNumberEditorUsesMouseWheel( false );
+   textLabel22.SetHasCustomTextHoverColor( false );
+   textLabel22.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel22.SetFont( "Arial Black", 10, false, false );
 
-   gateIn1 = new VoltageAudioJack( "gateIn1", "Gate In 1", this, JackType.JackType_AudioInput );
-   AddComponent( gateIn1 );
-   gateIn1.SetWantsMouseNotifications( false );
-   gateIn1.SetPosition( 47, 68 );
-   gateIn1.SetSize( 37, 37 );
-   gateIn1.SetSkin( "Jack Straight" );
+   textLabel23 = new VoltageLabel( "textLabel23", "textLabel23", this, "TV" );
+   AddComponent( textLabel23 );
+   textLabel23.SetWantsMouseNotifications( false );
+   textLabel23.SetPosition( 9, 249 );
+   textLabel23.SetSize( 13, 14 );
+   textLabel23.SetEditable( false, false );
+   textLabel23.SetJustificationFlags( VoltageLabel.Justification.Right );
+   textLabel23.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel23.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel23.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel23.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel23.SetBorderSize( 1 );
+   textLabel23.SetMultiLineEdit( false );
+   textLabel23.SetIsNumberEditor( false );
+   textLabel23.SetNumberEditorRange( 0, 100 );
+   textLabel23.SetNumberEditorInterval( 1 );
+   textLabel23.SetNumberEditorUsesMouseWheel( false );
+   textLabel23.SetHasCustomTextHoverColor( false );
+   textLabel23.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel23.SetFont( "Arial Black", 10, false, false );
 
-   gateIn2 = new VoltageAudioJack( "gateIn2", "Gate In 2", this, JackType.JackType_AudioInput );
-   AddComponent( gateIn2 );
-   gateIn2.SetWantsMouseNotifications( false );
-   gateIn2.SetPosition( 47, 112 );
-   gateIn2.SetSize( 37, 37 );
-   gateIn2.SetSkin( "Jack Straight" );
+   textLabel21 = new VoltageLabel( "textLabel21", "textLabel21", this, "OUTPUT" );
+   AddComponent( textLabel21 );
+   textLabel21.SetWantsMouseNotifications( false );
+   textLabel21.SetPosition( 0, 310 );
+   textLabel21.SetSize( 57, 15 );
+   textLabel21.SetEditable( false, false );
+   textLabel21.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel21.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel21.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel21.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel21.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel21.SetBorderSize( 1 );
+   textLabel21.SetMultiLineEdit( false );
+   textLabel21.SetIsNumberEditor( false );
+   textLabel21.SetNumberEditorRange( 0, 100 );
+   textLabel21.SetNumberEditorInterval( 1 );
+   textLabel21.SetNumberEditorUsesMouseWheel( false );
+   textLabel21.SetHasCustomTextHoverColor( false );
+   textLabel21.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel21.SetFont( "Arial Black", 10, false, false );
 
-   gateIn3 = new VoltageAudioJack( "gateIn3", "Gate In 3", this, JackType.JackType_AudioInput );
-   AddComponent( gateIn3 );
-   gateIn3.SetWantsMouseNotifications( false );
-   gateIn3.SetPosition( 47, 151 );
-   gateIn3.SetSize( 37, 37 );
-   gateIn3.SetSkin( "Jack Straight" );
+   voctIn = new VoltagePolyJack( "voctin", "V/OCT in", this, JackType.JackType_PolyInput );
+   AddComponent( voctIn );
+   voctIn.SetWantsMouseNotifications( false );
+   voctIn.SetPosition( 17, 31 );
+   voctIn.SetSize( 25, 25 );
+   voctIn.SetSkin( "Poly Jack Straight" );
 
-   gateIn4 = new VoltageAudioJack( "gateIn4", "Gate In 4", this, JackType.JackType_AudioInput );
-   AddComponent( gateIn4 );
-   gateIn4.SetWantsMouseNotifications( false );
-   gateIn4.SetPosition( 47, 190 );
-   gateIn4.SetSize( 37, 37 );
-   gateIn4.SetSkin( "Jack Straight" );
+   velocityIn = new VoltagePolyJack( "velocityIn", "Velocity In", this, JackType.JackType_PolyInput );
+   AddComponent( velocityIn );
+   velocityIn.SetWantsMouseNotifications( false );
+   velocityIn.SetPosition( 17, 81 );
+   velocityIn.SetSize( 25, 25 );
+   velocityIn.SetSkin( "Poly Jack Straight" );
 
-   pulseWidthIn1 = new VoltageAudioJack( "pulseWidthIn1", "Pulse With In 1", this, JackType.JackType_AudioInput );
-   AddComponent( pulseWidthIn1 );
-   pulseWidthIn1.SetWantsMouseNotifications( false );
-   pulseWidthIn1.SetPosition( 88, 69 );
-   pulseWidthIn1.SetSize( 37, 37 );
-   pulseWidthIn1.SetSkin( "Jack Straight" );
+   textLabel24 = new VoltageLabel( "textLabel24", "textLabel24", this, "V/OCT" );
+   AddComponent( textLabel24 );
+   textLabel24.SetWantsMouseNotifications( false );
+   textLabel24.SetPosition( 0, 61 );
+   textLabel24.SetSize( 57, 15 );
+   textLabel24.SetEditable( false, false );
+   textLabel24.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel24.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel24.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel24.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel24.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel24.SetBorderSize( 1 );
+   textLabel24.SetMultiLineEdit( false );
+   textLabel24.SetIsNumberEditor( false );
+   textLabel24.SetNumberEditorRange( 0, 100 );
+   textLabel24.SetNumberEditorInterval( 1 );
+   textLabel24.SetNumberEditorUsesMouseWheel( false );
+   textLabel24.SetHasCustomTextHoverColor( false );
+   textLabel24.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel24.SetFont( "Arial Black", 10, false, false );
 
-   pulseWidthIn2 = new VoltageAudioJack( "pulseWidthIn2", "Pulse With In 2", this, JackType.JackType_AudioInput );
-   AddComponent( pulseWidthIn2 );
-   pulseWidthIn2.SetWantsMouseNotifications( false );
-   pulseWidthIn2.SetPosition( 88, 112 );
-   pulseWidthIn2.SetSize( 37, 37 );
-   pulseWidthIn2.SetSkin( "Jack Straight" );
+   textLabel25 = new VoltageLabel( "textLabel25", "textLabel25", this, "VELOCITY" );
+   AddComponent( textLabel25 );
+   textLabel25.SetWantsMouseNotifications( false );
+   textLabel25.SetPosition( 0, 111 );
+   textLabel25.SetSize( 57, 15 );
+   textLabel25.SetEditable( false, false );
+   textLabel25.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel25.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel25.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel25.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel25.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel25.SetBorderSize( 1 );
+   textLabel25.SetMultiLineEdit( false );
+   textLabel25.SetIsNumberEditor( false );
+   textLabel25.SetNumberEditorRange( 0, 100 );
+   textLabel25.SetNumberEditorInterval( 1 );
+   textLabel25.SetNumberEditorUsesMouseWheel( false );
+   textLabel25.SetHasCustomTextHoverColor( false );
+   textLabel25.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel25.SetFont( "Arial Black", 10, false, false );
 
-   pulseWidthIn3 = new VoltageAudioJack( "pulseWidthIn3", "Pulse With In 3", this, JackType.JackType_AudioInput );
-   AddComponent( pulseWidthIn3 );
-   pulseWidthIn3.SetWantsMouseNotifications( false );
-   pulseWidthIn3.SetPosition( 90, 148 );
-   pulseWidthIn3.SetSize( 37, 37 );
-   pulseWidthIn3.SetSkin( "Jack Straight" );
+   textLabel26 = new VoltageLabel( "textLabel26", "textLabel26", this, "JITTER" );
+   AddComponent( textLabel26 );
+   textLabel26.SetWantsMouseNotifications( false );
+   textLabel26.SetPosition( 0, 166 );
+   textLabel26.SetSize( 57, 15 );
+   textLabel26.SetEditable( false, false );
+   textLabel26.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel26.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel26.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel26.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel26.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel26.SetBorderSize( 1 );
+   textLabel26.SetMultiLineEdit( false );
+   textLabel26.SetIsNumberEditor( false );
+   textLabel26.SetNumberEditorRange( 0, 100 );
+   textLabel26.SetNumberEditorInterval( 1 );
+   textLabel26.SetNumberEditorUsesMouseWheel( false );
+   textLabel26.SetHasCustomTextHoverColor( false );
+   textLabel26.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel26.SetFont( "Arial Black", 10, false, false );
 
-   pulseWidthIn4 = new VoltageAudioJack( "pulseWidthIn4", "Pulse With In 4", this, JackType.JackType_AudioInput );
-   AddComponent( pulseWidthIn4 );
-   pulseWidthIn4.SetWantsMouseNotifications( false );
-   pulseWidthIn4.SetPosition( 88, 188 );
-   pulseWidthIn4.SetSize( 37, 37 );
-   pulseWidthIn4.SetSkin( "Jack Straight" );
+   textLabel27 = new VoltageLabel( "textLabel27", "textLabel27", this, "PULSE SIZE" );
+   AddComponent( textLabel27 );
+   textLabel27.SetWantsMouseNotifications( false );
+   textLabel27.SetPosition( 0, 221 );
+   textLabel27.SetSize( 57, 15 );
+   textLabel27.SetEditable( false, false );
+   textLabel27.SetJustificationFlags( VoltageLabel.Justification.HorizCentered );
+   textLabel27.SetJustificationFlags( VoltageLabel.Justification.VertCentered );
+   textLabel27.SetColor( new Color( 255, 255, 255, 255 ) );
+   textLabel27.SetBkColor( new Color( 65, 65, 65, 0 ) );
+   textLabel27.SetBorderColor( new Color( 0, 0, 0, 0 ) );
+   textLabel27.SetBorderSize( 1 );
+   textLabel27.SetMultiLineEdit( false );
+   textLabel27.SetIsNumberEditor( false );
+   textLabel27.SetNumberEditorRange( 0, 100 );
+   textLabel27.SetNumberEditorInterval( 1 );
+   textLabel27.SetNumberEditorUsesMouseWheel( false );
+   textLabel27.SetHasCustomTextHoverColor( false );
+   textLabel27.SetTextHoverColor( new Color( 0, 0, 0, 255 ) );
+   textLabel27.SetFont( "Arial Black", 10, false, false );
+
+   pulseSizeKnob = new VoltageKnob( "pulseSizeKnob", "Pulse Size", this, 4, 32, 18.00 );
+   AddComponent( pulseSizeKnob );
+   pulseSizeKnob.SetWantsMouseNotifications( false );
+   pulseSizeKnob.SetPosition( 17, 191 );
+   pulseSizeKnob.SetSize( 27, 27 );
+   pulseSizeKnob.SetSkin( "Plastic Red" );
+   pulseSizeKnob.SetRange( 4, 32, 18.00, false, 29 );
+   pulseSizeKnob.SetKnobParams( 215, 145 );
+   pulseSizeKnob.DisplayValueInPercent( false );
+   pulseSizeKnob.SetKnobAdjustsRing( true );
+
+   jitterKnob = new VoltageKnob( "jitterKnob", "Jitter", this, 0.0, 1.0, 0 );
+   AddComponent( jitterKnob );
+   jitterKnob.SetWantsMouseNotifications( false );
+   jitterKnob.SetPosition( 17, 136 );
+   jitterKnob.SetSize( 27, 27 );
+   jitterKnob.SetSkin( "Plastic Yellow" );
+   jitterKnob.SetRange( 0.0, 1.0, 0, false, 0 );
+   jitterKnob.SetKnobParams( 215, 145 );
+   jitterKnob.DisplayValueInPercent( false );
+   jitterKnob.SetKnobAdjustsRing( true );
 }
 
 
@@ -141,7 +289,7 @@ void InitializeControls()
 public void Initialize()
 {
    //[user-Initialize]   Add your own initialization code here
-
+   voices = GetNumberOfPolyVoices();
 
 
    //[/user-Initialize]
@@ -179,6 +327,12 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
    {
       case Knob_Changed:   // doubleValue is the new VoltageKnob value
       {
+         if (component == jitterKnob) {
+            engine.setJitter(doubleValue);
+         }
+         if (component == pulseSizeKnob) {
+            engine.setPulseSize((int) doubleValue);
+         }
       }
       break;
    
@@ -194,6 +348,11 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
    
       case Switch_Changed:   // doubleValue is the new switch value
       {
+         if (component == outputModeSwitch) {
+            engine.setFilterProfile(doubleValue == 0.0
+               ? FilterProfile.PIEZO
+               : FilterProfile.TV_SPEAKER);
+         }
       }
       break;
    
@@ -306,6 +465,7 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
    
       case PolyVoices_Changed:    // longValue is the new number of poly voices
       {
+         voices = (int) longValue;
       }
       break;
    
@@ -394,29 +554,13 @@ public boolean Notify( VoltageComponent component, ModuleNotifications notificat
 public void ProcessSample()
 {
    //[user-ProcessSample]   Add your own process-sampling code here
-   engine.setChannel(
-      0,
-      voctIn1.GetValue(),
-      gateIn1.GetValue() > 0.0,
-      0x7FFF + 0x7F0 * pulseWidthIn1.GetValue() * 0.2);
-
-   engine.setChannel(
-      1,
-      voctIn2.GetValue(),
-      gateIn2.GetValue() > 0.0,
-      0x7FFF + 0x7F0 * pulseWidthIn2.GetValue() * 0.2);
-
-   engine.setChannel(
-      2,
-      voctIn3.GetValue(),
-      gateIn3.GetValue() > 0.0,
-      0x7FFF + 0x7F0 * pulseWidthIn3.GetValue() * 0.2);
-
-   engine.setChannel(
-      3,
-      voctIn4.GetValue(),
-      gateIn4.GetValue() > 0.0,
-      0x7FFF + 0x7F0 * pulseWidthIn4.GetValue() * 0.2);
+   for (int i=0; i<voices; i++) {
+     engine.updateChannel(
+        i,
+        voctIn.GetPolyValue(i),
+        velocityIn.GetPolyValue(i)
+     );
+  }
       
    audioOut.SetValue(engine.processSample());
    //[/user-ProcessSample]
@@ -434,9 +578,11 @@ public void ProcessSample()
 public String GetTooltipText( VoltageComponent component )
 {
    //[user-GetTooltipText]   Add your own code here
-
-
-
+   if (component == outputModeSwitch) {
+      return outputModeSwitch.GetValue() == 0
+         ? "Beeper"
+         : "TV Speaker";
+   }      
    return super.GetTooltipText( component );
    //[/user-GetTooltipText]
 }
@@ -552,24 +698,26 @@ public void SetStateInformationForVariations(byte[] stateInfo)
 
 
 // Auto-generated variables
-private VoltageAudioJack pulseWidthIn4;
-private VoltageAudioJack pulseWidthIn3;
-private VoltageAudioJack pulseWidthIn2;
-private VoltageAudioJack pulseWidthIn1;
-private VoltageAudioJack gateIn4;
-private VoltageAudioJack gateIn3;
-private VoltageAudioJack gateIn2;
-private VoltageAudioJack gateIn1;
-private VoltageAudioJack voctIn4;
-private VoltageAudioJack voctIn3;
-private VoltageAudioJack voctIn2;
-private VoltageAudioJack voctIn1;
+private VoltageKnob jitterKnob;
+private VoltageKnob pulseSizeKnob;
+private VoltageLabel textLabel27;
+private VoltageLabel textLabel26;
+private VoltageLabel textLabel25;
+private VoltageLabel textLabel24;
+private VoltagePolyJack velocityIn;
+private VoltagePolyJack voctIn;
+private VoltageLabel textLabel21;
+private VoltageLabel textLabel23;
+private VoltageLabel textLabel22;
+private VoltageLabel textLabel2;
+private VoltageLabel textLabel1;
+private VoltageSwitch outputModeSwitch;
 private VoltageAudioJack audioOut;
 
 
 //[user-code-and-variables]    Add your own variables and functions here
-private final SpectrumEngine engine = new SpectrumEngine();
-
+private final SoundEngine engine = new SoundEngine(48000);
+private int voices = 16;
 
 
 

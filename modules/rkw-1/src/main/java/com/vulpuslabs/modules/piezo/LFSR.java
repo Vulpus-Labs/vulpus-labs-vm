@@ -10,15 +10,14 @@ public class LFSR {
     private static final int POLYNOMIAL = 0xB400;  // Taps at bits 15, 13, 12, 10
 
     private int register;
-    private boolean output;
+    private boolean lastBoolean;
 
     public LFSR() {
         this(0x1234);  // Default seed
     }
 
     public LFSR(int seed) {
-        this.register = seed & 0xFFFF;
-        this.output = (register & 1) == 1;
+        reset(seed & 0xFFFF);
     }
 
     /**
@@ -30,14 +29,15 @@ public class LFSR {
         if (lsb == 1) {
             register ^= POLYNOMIAL;
         }
+        lastBoolean = (register & 1) == 1;
     }
 
     /**
      * Get the current output bit.
      * @return true for 1, false for 0
      */
-    public boolean getBoolean() {
-        return (register & 1) == 1;
+    public boolean getLastBoolean() {
+        return lastBoolean;
     }
 
     public byte getNextByte() {
@@ -51,6 +51,6 @@ public class LFSR {
      */
     public void reset(int seed) {
         this.register = seed & 0xFFFF;
-        this.output = (register & 1) == 1;
+        this.lastBoolean = (register & 1) == 1;
     }
 }

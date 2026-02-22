@@ -68,7 +68,7 @@ final class TickRateEngine {
         for (int i = 0; i < 3; i++) {
             int currentPhase = (phaseAccumulators[i] + phaseDeltas[i]) & 0xFFFF;
             phaseAccumulators[i] = currentPhase;
-            beeperStates[i] = gates[i] & (currentPhase > pulseWidths[i]);
+            beeperStates[i] = gates[i] && (currentPhase > pulseWidths[i]);
         }
 
         // Noise channel (3) - LFSR clocked at the specified rate
@@ -80,7 +80,7 @@ final class TickRateEngine {
             noiseLFSR.clock();
         }
         previousNoisePhase = currentPhase;
-        beeperStates[3] = gates[3] & noiseLFSR.getBoolean();
+        beeperStates[3] = gates[3] & noiseLFSR.getLastBoolean();
 
         beeperState = mixMode.mixVoices(beeperStates, interleaveSelector);
 
